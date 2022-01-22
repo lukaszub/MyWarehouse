@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+    <link th:href="@{/style.css}" rel="stylesheet"/>
+</head>
+<body>
+   
+    <a th:href="@{/}">MyWarehouse</a>
+               
+    <h2>Nasze produkty:</h2>  
+    
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Serial number</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product: ${products}">
+            <td>
+                <a th:text="${product.name}" th:href="@{/product/{productNumber}(productNumber = ${product.productNumber}) }">1</a>
+            </td>
+            
+            <td th:text="${product.productNumber}"></td>
+
+            <td>
+                    <input type="number" th:value="${product.quantity}" id="updateQuantity" name="updateQuantity" readonly>
+                    <form action="#" th:action="@{/updateQuantity/{productNumber}/{action}(productNumber = ${product.productNumber}, action = increase)}" method="post">
+                        <button type="submit">+</button>
+                    </form>
+                    <form action="#" th:action="@{/updateQuantity/{productNumber}/{action}(productNumber = ${product.productNumber}, action = decrease)}" method="post">
+                        <button type="submit">-</button>
+                    </form>
+                </div>
+            </td>
+
+            <td class="align-middle" th:text="${product.price}"></td>
+
+        </tr>
+           
+        </tr>
+        </tbody>
+    </table>
+    
+        
+   
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Szczegóły</title>
+   
+</head>
+<body>
+
+            <a class="navbar-brand" th:href="@{/}">Powrót do głównej strony</a>
+
+            
+                <div th:each="detail: ${product}">
+                    
+                        <h3>Nazwa:</h3>
+                        <p th:text="${detail.name}"></p>
+                  
+                        <h3>Numer prod.:</h3>
+                        <p th:text="${detail.productNumber}"></p>
+                    
+                        <h3>Ilość:</h3>
+                        <p th:text="${detail.quantity}"></p>
+            
+                        <h3>Cena:</h3>
+                        <p th:text="${detail.price}"></p>
+                  
+
+                   
+                        <h3>Opis:</h3>
+                        <p th:text="${detail.desc}"></p>
+                    
+                </div>
+
+             
+
+</body>
+</html>
